@@ -49,17 +49,18 @@ class Game
 
       def winner
         if winning_combo = won? #if winning combo is true
-          @winner = @board.cells[winning_combo.first] #Then winner is the char in the first cell
+          #@winner =
+          @board.cells[winning_combo.first] #Then winner is the char in the first cell
         end
       end
 
       def turn
         input = current_player.move(board)
-        if !@board.valid_move?(input)
-          turn
-        else
+        if @board.valid_move?(input)
           board.update(input, current_player)
           board.display
+        else @board.valid_move?(input) == false
+          turn
         end
       end
 
